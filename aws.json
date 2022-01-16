@@ -1,0 +1,42 @@
+{
+    "builders": [
+        {
+            "type" : "amazon-ebs", 
+            "access_key": "AKIAWVSUIT4G75KD7MGM",
+            "secret_key": "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",
+            "region": "us-east-1",
+            "ami_name": "tarea1_packer_nginx_ji2",
+            "source_ami": "ami-04505e74c0741db8d",
+            "instance_type": "t2.micro",
+            "ssh_username": "ubuntu"
+        }
+    ],
+    "provisioners": [
+        
+        {
+            "type": "file",
+            "source": "hello.js",
+            "destination": "/tmp/"
+        },
+        {
+            "type": "file",
+            "source": "index.html",
+            "destination": "/tmp/"
+        },
+        {
+            "type": "file",
+            "source": "default",
+            "destination": "/tmp/"
+        },
+        {
+            "type": "file",
+            "source": "myapp.service",
+            "destination": "/tmp/"
+        },
+        {
+            "type" : "shell",
+            "script" : "setup.sh"
+        }
+
+    ]
+}
